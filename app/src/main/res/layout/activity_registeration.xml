@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kushal.firebasedatabase2auth.RegisterationActivity">
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <EditText
+            android:id="@+id/emailTB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="99dp"
+            android:ems="10"
+            android:hint="Enter email..."
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/passTB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/emailTB"
+            android:layout_alignStart="@+id/emailTB"
+            android:layout_below="@+id/emailTB"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:hint="password.."
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/signUpbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/passTB"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="89dp"
+            android:background="?android:attr/colorFocusedHighlight"
+            android:text="SIGNUP" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/signUpbtn"
+            android:layout_alignLeft="@+id/passTB"
+            android:layout_alignStart="@+id/passTB"
+            app:srcCompat="@drawable/firebaselogo" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

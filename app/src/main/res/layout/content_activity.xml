@@ -8,12 +8,13 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="77dp"
         android:ems="10"
         android:hint="your name....."
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button2"
+        android:layout_alignEnd="@+id/button2" />
 
     <Button
         android:id="@+id/button2"
@@ -27,9 +28,41 @@
         android:id="@+id/fbtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignParentBottom="true"
+        android:text="Name"
+        android:textSize="30sp"
+        android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
-        android:textSize="30sp"/>
+        android:layout_marginTop="29dp" />
+
+    <EditText
+        android:id="@+id/emailfb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="email.."
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/infobtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/emfbtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Email"
+        android:layout_below="@+id/fbtxt"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -8,7 +8,7 @@
     tools:context="com.kushal.firebasedatabase2auth.MainActivity">
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,5 +21,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+    <include layout="@layout/content_activity">
+
+    </include>
+
+
+
 </android.support.constraint.ConstraintLayout>

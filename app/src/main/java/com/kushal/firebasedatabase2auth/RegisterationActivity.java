@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterationActivity extends AppCompatActivity {
 
-
+    Button mSigninbtn;
     Button mSignupbtn;
     EditText mEmailtb;
     EditText mPasstb;
@@ -39,6 +39,7 @@ public class RegisterationActivity extends AppCompatActivity {
         mPasstb = (EditText) findViewById(R.id.passTB);
 
         mSignupbtn = (Button) findViewById(R.id.signUpbtn);
+        mSigninbtn = (Button) findViewById(R.id.signinBtn);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -50,7 +51,17 @@ public class RegisterationActivity extends AppCompatActivity {
             }
         });
 
+        mSigninbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                signIn();
+
+            }
+        });
+
     }
+
 
     private void registeration() {
 
@@ -96,8 +107,41 @@ public class RegisterationActivity extends AppCompatActivity {
 
     }
 
+    private void signIn() {
+        String email = mEmailtb.getText().toString().trim();
+        String password = mPasstb.getText().toString().trim();
 
-}
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this , "PLEASE ENTER EMAIL ....",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this , "PLEASE ENTER A VALID PASSWORD ....",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        mProgress.setMessage("Signing in...");
+        mProgress.show();
+        mAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Intent intent2 = new Intent(RegisterationActivity.this , MainActivity.class);
+                    Toast.makeText(RegisterationActivity.this , "Successfull sign in",Toast.LENGTH_LONG).show();
+                    startActivity(intent2);
+                    return;
+                }else {
+                    Toast.makeText(RegisterationActivity.this , "enter correct email and passsword",Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+
+
+    }
+
+ }
 
 
 

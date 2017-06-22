@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kushal.firebasedatabase2auth.RegisterationActivity">
+
     <RelativeLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
 
         <EditText
@@ -39,20 +40,33 @@
             android:id="@+id/signUpbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/passTB"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="89dp"
+            android:layout_marginTop="98dp"
             android:background="?android:attr/colorFocusedHighlight"
-            android:text="SIGNUP" />
+            android:text="SIGNUP"
+            android:layout_below="@+id/passTB"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView"
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignBottom="@+id/signUpbtn"
-            android:layout_alignLeft="@+id/passTB"
-            android:layout_alignStart="@+id/passTB"
-            app:srcCompat="@drawable/firebaselogo" />
+            app:srcCompat="@drawable/firebaselogo"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp" />
+
+        <Button
+            android:id="@+id/signinBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/signUpbtn"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:background="@android:color/holo_orange_dark"
+            android:text="SIGN IN" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

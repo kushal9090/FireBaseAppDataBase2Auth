@@ -130,7 +130,9 @@ public class RegisterationActivity extends AppCompatActivity {
                     Intent intent2 = new Intent(RegisterationActivity.this , MainActivity.class);
                     Toast.makeText(RegisterationActivity.this , "Successfull sign in",Toast.LENGTH_LONG).show();
                     startActivity(intent2);
+                    finish();
                     return;
+
                 }else {
                     Toast.makeText(RegisterationActivity.this , "enter correct email and passsword",Toast.LENGTH_LONG).show();
                     return;

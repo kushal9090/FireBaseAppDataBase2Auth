@@ -24,6 +24,7 @@ public class RegisterationActivity extends AppCompatActivity {
     Button mSignupbtn;
     EditText mEmailtb;
     EditText mPasstb;
+    ProgressDialog mProgress;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -33,6 +34,7 @@ public class RegisterationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeration);
 
+        mProgress = new ProgressDialog(this);
         mEmailtb = (EditText) findViewById(R.id.emailTB);
         mPasstb = (EditText) findViewById(R.id.passTB);
 
@@ -65,7 +67,8 @@ public class RegisterationActivity extends AppCompatActivity {
           return;
         }
 
-
+      mProgress.setMessage("Signing up.....");
+        mProgress.show();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -77,6 +80,7 @@ public class RegisterationActivity extends AppCompatActivity {
                             Intent intent = new Intent(RegisterationActivity.this , MainActivity.class);
                             Toast.makeText(RegisterationActivity.this, "Sign up successful..",Toast.LENGTH_LONG ).show();
                             startActivity(intent);
+                            finish();
 
 
                         } else {

@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.List;
+
 import static android.R.attr.inAnimation;
 import static android.R.attr.name;
 
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     TextView mEtext;
     EditText mEmailText;
     Button mInfobtn;
-
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference name = mRootRef.child("name");
@@ -48,31 +49,24 @@ public class MainActivity extends AppCompatActivity {
         mEtext = (TextView) findViewById(R.id.emfbtxt);
         mEmailText = (EditText) findViewById(R.id.emailfb);
         mInfobtn = (Button) findViewById(R.id.infobtn);
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        name.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                String usersnm = mEditText.getText().toString();
                 String email = mEmailText.getText().toString();
+
+
+
+
                 name.child("username").setValue(usersnm);
                 name.child("email").setValue(email);
 

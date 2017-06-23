@@ -17,18 +17,24 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterationActivity extends AppCompatActivity {
 
     Button mSigninbtn;
     Button mSignupbtn;
+
     EditText mEmailtb;
     EditText mPasstb;
+    EditText mName;
+
     ProgressDialog mProgress;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +43,12 @@ public class RegisterationActivity extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
         mEmailtb = (EditText) findViewById(R.id.emailTB);
         mPasstb = (EditText) findViewById(R.id.passTB);
+        mName = (EditText) findViewById(R.id.nameTB);
 
         mSignupbtn = (Button) findViewById(R.id.signUpbtn);
         mSigninbtn = (Button) findViewById(R.id.signinBtn);
 
+        mDatabase =FirebaseDatabase.getInstance().getReference().child("users");
         mAuth = FirebaseAuth.getInstance();
 
         mSignupbtn.setOnClickListener(new View.OnClickListener() {
@@ -62,16 +70,25 @@ public class RegisterationActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     private void registeration() {
-
-        String email = mEmailtb.getText().toString().trim();
+        final String name = mName.getText().toString().trim();
+        final String email = mEmailtb.getText().toString().trim();
         String password = mPasstb.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this , "PLEASE ENTER EMAIL ....",Toast.LENGTH_LONG).show();
             return;
         }
+        if(TextUtils.isEmpty(name)){
+            Toast.makeText(this , "PLEASE ENTER NAME ....",Toast.LENGTH_LONG).show();
+            return;
+        }
+
 
         if(TextUtils.isEmpty(password)){
             Toast.makeText(this , "PLEASE ENTER A VALID PASSWORD ....",Toast.LENGTH_LONG).show();
@@ -87,11 +104,18 @@ public class RegisterationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                             String user_id = mAuth.getCurrentUser().getUid();
 
-                            Intent intent = new Intent(RegisterationActivity.this , MainActivity.class);
+                            DatabaseReference current_u_id = mDatabase.child(user_id);
+
+                            current_u_id.child("name").setValue(name);
+                            current_u_id.child("email").setValue(email);
+
+
+                            mProgress.dismiss();
                             Toast.makeText(RegisterationActivity.this, "Sign up successful..",Toast.LENGTH_LONG ).show();
-                            startActivity(intent);
-                            finish();
+
+
 
 
                         } else {

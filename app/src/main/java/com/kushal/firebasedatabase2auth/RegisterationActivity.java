@@ -106,6 +106,10 @@ public class RegisterationActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                              String user_id = mAuth.getCurrentUser().getUid();
 
+                            mEmailtb.setText("");
+                            mName.setText("");
+                            mPasstb.setText("");
+
                             DatabaseReference current_u_id = mDatabase.child(user_id);
 
                             current_u_id.child("name").setValue(name);

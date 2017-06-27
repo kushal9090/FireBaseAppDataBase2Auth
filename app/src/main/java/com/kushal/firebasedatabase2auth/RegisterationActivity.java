@@ -27,7 +27,6 @@ public class RegisterationActivity extends AppCompatActivity {
 
     EditText mEmailtb;
     EditText mPasstb;
-    EditText mName;
 
     ProgressDialog mProgress;
 
@@ -43,7 +42,7 @@ public class RegisterationActivity extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
         mEmailtb = (EditText) findViewById(R.id.emailTB);
         mPasstb = (EditText) findViewById(R.id.passTB);
-        mName = (EditText) findViewById(R.id.nameTB);
+
 
         mSignupbtn = (Button) findViewById(R.id.signUpbtn);
         mSigninbtn = (Button) findViewById(R.id.signinBtn);
@@ -76,16 +75,12 @@ public class RegisterationActivity extends AppCompatActivity {
     }
 
     private void registeration() {
-        final String name = mName.getText().toString().trim();
+
         final String email = mEmailtb.getText().toString().trim();
         String password = mPasstb.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this , "PLEASE ENTER EMAIL ....",Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(TextUtils.isEmpty(name)){
-            Toast.makeText(this , "PLEASE ENTER NAME ....",Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -107,12 +102,13 @@ public class RegisterationActivity extends AppCompatActivity {
                              String user_id = mAuth.getCurrentUser().getUid();
 
                             mEmailtb.setText("");
-                            mName.setText("");
                             mPasstb.setText("");
+
+
 
                             DatabaseReference current_u_id = mDatabase.child(user_id);
 
-                            current_u_id.child("name").setValue(name);
+
                             current_u_id.child("email").setValue(email);
 
 
@@ -155,7 +151,7 @@ public class RegisterationActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Intent intent2 = new Intent(RegisterationActivity.this , MainActivity.class);
+                    Intent intent2 = new Intent(RegisterationActivity.this , InformationActivity.class);
                     Toast.makeText(RegisterationActivity.this , "Successfull sign in",Toast.LENGTH_LONG).show();
                     startActivity(intent2);
                     finish();

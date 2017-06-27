@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kushal.firebasedatabase2auth.RegisterationActivity"
-    android:background="@drawable/flatwallpaper">
+    android:background="@drawable/firebaselogo">
 
     <RelativeLayout
         android:layout_width="368dp"
@@ -18,45 +18,41 @@
             android:id="@+id/emailTB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter email..."
             android:inputType="textEmailAddress"
             android:paddingBottom="20dp"
-            android:layout_below="@+id/imageView"
-            android:layout_alignLeft="@+id/nameTB"
-            android:layout_alignStart="@+id/nameTB"
             android:background="@android:color/white"
 
-           />
+            android:layout_above="@+id/passTB"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp" />
 
         <EditText
             android:id="@+id/passTB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/nameTB"
-            android:layout_alignStart="@+id/nameTB"
-            android:layout_below="@+id/nameTB"
-            android:layout_marginTop="24dp"
             android:ems="10"
             android:hint="password.."
             android:paddingBottom="20dp"
             android:background="@android:color/white"
             android:inputType="textPassword"
-           />
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/emailTB"
+            android:layout_alignStart="@+id/emailTB" />
 
         <Button
             android:id="@+id/signUpbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/passTB"
-            android:layout_marginEnd="14dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginTop="98dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginRight="22dp"
+            android:background="?android:attr/colorFocusedHighlight"
+            android:text="SIGNUP"
+            android:layout_alignParentBottom="true"
             android:layout_toLeftOf="@+id/imageView"
             android:layout_toStartOf="@+id/imageView"
-            android:background="?android:attr/colorFocusedHighlight"
-            android:text="SIGNUP" />
+            android:layout_marginBottom="118dp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -77,20 +73,6 @@
             android:background="@color/colorToolbar"
             android:text="SIGN IN" />
 
-        <EditText
-            android:id="@+id/nameTB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:ems="10"
-            android:hint="Enter your name.."
-            android:inputType="textPersonName"
-            android:paddingBottom="20dp"
-            android:layout_below="@+id/emailTB"
-            android:background="@android:color/white"
-            android:layout_centerHorizontal="true"
-
-            />
     </RelativeLayout>
 
 
